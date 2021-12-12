@@ -1,5 +1,5 @@
 export const indexToCoordinate = (index: number, rows: number, cols: number) => {
-  const row = Math.floor(index / rows);
+  const row = Math.floor(index / cols);
   const col = index - row * cols;
   return [row, col];
 };

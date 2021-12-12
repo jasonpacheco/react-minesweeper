@@ -1,4 +1,4 @@
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 // @ts-ignore
 import { styleReset, Window, WindowHeader, WindowContent, Cutout } from 'react95';
 // @ts-ignore
@@ -24,6 +24,20 @@ const GlobalStyles = createGlobalStyle`
   }
   body {
     font-family: 'ms_sans_serif';
+    background-color: teal;
+  }
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 30px 10px;
+  box-sizing: border-box;
+  .window {
+    width: 100%;
+    max-width: max-content;
   }
 `;
 
@@ -32,18 +46,19 @@ export const App = () => {
     <>
       <GlobalStyles />
       <ThemeProvider theme={original}>
-        <Window>
-          <WindowHeader>
-            <span>Minesweeper</span>
-          </WindowHeader>
-
-          <WindowContent>
-            <GameStateBar />
-            <Cutout>
-              <Minefield />
-            </Cutout>
-          </WindowContent>
-        </Window>
+        <Wrapper>
+          <Window className="window">
+            <WindowHeader>
+              <span>Minesweeper</span>
+            </WindowHeader>
+            <WindowContent>
+              <GameStateBar />
+              <Cutout>
+                <Minefield />
+              </Cutout>
+            </WindowContent>
+          </Window>
+        </Wrapper>
       </ThemeProvider>
     </>
   );

@@ -21,8 +21,9 @@ const useGameStore = create<GameStoreState>((set, get) => ({
   rows,
   cols,
   mines,
+  flags: mines,
   minefield: initialMinefield(),
-  resetGame: () => set({ state: 'initial', minefield: initialMinefield() }),
+  resetGame: () => set({ state: 'initial', minefield: initialMinefield(), flags: mines }),
   updateMinefield: (index) => {
     const { state, rows, cols, mines, minefield } = get();
     if (state === 'game-over') return;
@@ -33,6 +34,7 @@ const useGameStore = create<GameStoreState>((set, get) => ({
     if (minefield[index].isMine) {
       set({ state: 'game-over' });
     }
+
     set((prev) => ({
       ...prev,
       minefield: handleCellClick(index, prev.minefield, rows, cols),

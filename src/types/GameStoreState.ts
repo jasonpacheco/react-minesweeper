@@ -6,6 +6,7 @@ type GameStoreState = {
   rows: number;
   cols: number;
   mines: number;
+  flags: number;
   minefield: Cell[];
   updateMinefield(index: number): void;
   resetGame(): void;

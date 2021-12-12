@@ -22,8 +22,8 @@ const radiate = (
   }
 
   collector.push(index);
-  const coordinate = indexToCoordinate(index, rows, cols);
 
+  const coordinate = indexToCoordinate(index, rows, cols);
   adjacentCells(coordinate).forEach((cell) => {
     const cellIndex = coordinateToIndex(cell, rows, cols);
     radiate(collector, cellIndex, minefield, rows, cols);
@@ -37,22 +37,28 @@ const handleCellClick = (
   cols: number,
 ) => {
   const clickedCell = minefield[index];
+
   if (clickedCell.isRevealed) return minefield;
+
   if (clickedCell.isMine) {
     return minefield.map((cell) => (cell.isMine ? { ...cell, isRevealed: true } : cell));
   }
+
   if (!clickedCell.isRevealed) {
     if (clickedCell.adjacentMines > 0) {
       return minefield.map((cell, i) =>
         index === i ? { ...cell, isRevealed: true } : cell,
       );
     }
+
     let neighborsToReveal: number[] = [];
     radiate(neighborsToReveal, index, minefield, rows, cols);
+
     return minefield.map((cell, i) =>
       neighborsToReveal.includes(i) ? { ...cell, isRevealed: true } : cell,
     );
   }
+
   return minefield;
 };
 
