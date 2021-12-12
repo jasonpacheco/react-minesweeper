@@ -1,5 +1,5 @@
 {
-  "name": "vite-ts-react-starter",
+  "name": "react-minesweeper",
   "version": "1.0.0",
   "scripts": {
     "start": "vite --host --open",
@@ -12,12 +12,14 @@
   },
   "dependencies": {
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "styled-components": "^5.3.3"
   },
   "devDependencies": {
     "@types/node": "^16.11.4",
     "@types/react": "^17.0.31",
     "@types/react-dom": "^17.0.10",
+    "@types/styled-components": "^5.1.17",
     "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@typescript-eslint/parser": "^5.1.0",
     "@vitejs/plugin-react": "^1.0.5",
